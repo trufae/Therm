@@ -17,7 +17,8 @@ jobs:
       run: |
         make -j4 CIFLAGS='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO' | tee build.log
     - name: Count Warnings
-      run: grep warning: build.log | wc -l
+      run: |
+        grep 'warning:' build.log | wc -l
     - name: Packaging
       run: make dist
     - uses: actions/upload-artifact@v3
