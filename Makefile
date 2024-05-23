@@ -9,6 +9,9 @@ COMPACTDATE=$(shell date +"%Y%m%d")
 VERSION = $(shell cat version.txt)
 NAME=$(shell echo $(VERSION) | sed -e "s/\\./_/g")
 
+# CIFLAGS=CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+CIFLAGS=
+
 .PHONY: clean all restart
 
 all: Development
@@ -33,8 +36,8 @@ install: | Deployment
 Development: config.h
 	rm -rf build/Development/Therm.app
 	echo "Using PATH for build: $(PATH)"
-	cd ColorPicker && xcodebuild
-	xcodebuild -parallelizeTargets -target Therm -configuration Development
+	cd ColorPicker && xcodebuild $(CIFLAGS)
+	xcodebuild -parallelizeTargets -target Therm -configuration Development $(CIFLAGS)
 	chmod -R go+rX build/Development
 	mkdir -p build/Development/Therm.app/Contents/Frameworks/
 	cp -rf ColorPicker/ColorPicker.framework build/Development/Therm.app/Contents/Frameworks/

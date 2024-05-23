@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: build
       run: |
+        export CIFLAGS='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO'
         make -j4
     - name: packaging
       run: make dist
