@@ -37,8 +37,7 @@ Development: config.h
 	rm -rf build/Development/Therm.app
 	echo "Using PATH for build: $(PATH)"
 	cd ColorPicker && xcodebuild $(CIFLAGS)
-	find ColorPicker
-	exit 1
+	-mv ColorPicker/ColorPicker-x86_64.framework ColorPicker/ColorPicker.framework
 	cp -rf ColorPicker/ColorPicker.framework ThirdParty
 	xcodebuild -target Therm -configuration Development $(CIFLAGS)
 	# xcodebuild -parallelizeTargets -target Therm -configuration Development $(CIFLAGS)
