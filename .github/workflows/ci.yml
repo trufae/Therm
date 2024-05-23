@@ -13,10 +13,10 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
-    - name: build
+    - name: Build
       run: |
         make -j4 CIFLAGS='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO'
-    - name: packaging
+    - name: Packaging
       run: make dist
     - uses: actions/upload-artifact@v3
       with:
