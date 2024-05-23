@@ -39,8 +39,8 @@ Development: config.h
 	echo "Using PATH for build: $(PATH)"
 	cd ColorPicker && xcodebuild $(CIFLAGS)
 	-[ ! -d ColorPicker/ColorPicker.framework ] && mv ColorPicker/build/Release/ColorPicker.framework ColorPicker/
-	xcodebuild -target Therm -configuration Development $(CIFLAGS)
-	# xcodebuild -parallelizeTargets -target Therm -configuration Development $(CIFLAGS)
+	# xcodebuild -target Therm -configuration Development $(CIFLAGS)
+	xcodebuild -parallelizeTargets -target Therm -configuration Development $(CIFLAGS)
 	chmod -R go+rX build/Development
 	mkdir -p build/Development/Therm.app/Contents/Frameworks/
 	cp -rf ColorPicker/ColorPicker.framework build/Development/Therm.app/Contents/Frameworks/
