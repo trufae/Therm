@@ -20,7 +20,7 @@ jobs:
       run: |
         grep 'warning:' build.log | wc -l
     - name: Packaging
-      run: make dist
+      run: make dist CIFLAGS='CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO'
     - uses: actions/upload-artifact@v3
       with:
         name: Therm.zip
