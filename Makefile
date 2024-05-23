@@ -34,6 +34,7 @@ install: | Deployment
 	cp -R build/Deployment/Therm.app $(APPS)
 
 Development: config.h
+	cp -f plists/Therm.plist.development plists/Therm.plist
 	rm -rf build/Development/Therm.app
 	echo "Using PATH for build: $(PATH)"
 	cd ColorPicker && xcodebuild $(CIFLAGS)
@@ -78,7 +79,7 @@ restart:
 	/bin/kill -TERM $(ITERM_PID)
 
 release:
-	cp plists/release-Therm.plist plists/Therm.plist
+	cp -f plists/Therm.plist.release plists/Therm.plist
 	$(MAKE) Deployment
 
 todo:
