@@ -55,7 +55,7 @@ Deployment:
 	chmod -R go+rX build/Deployment
 	mkdir -p build/Deployment/Therm.app/Contents/Frameworks/
 	cp -rf ColorPicker/ColorPicker.framework build/Deployment/Therm.app/Contents/Frameworks/
-	sh version.sh -f
+	-sh version.sh -f
 
 run: Development
 	build/Development/Therm.app/Contents/MacOS/Therm
